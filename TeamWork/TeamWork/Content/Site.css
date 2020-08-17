@@ -1,0 +1,68 @@
+﻿*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+
+.side-bar-menu{
+    margin:50px;
+
+}
+.about-top{
+    background-image:url('/Content/images/teamwork.jpg');
+    min-height:400px;
+}
+.top{
+    margin-top:100px;
+}
+ .about-top > h1 {
+        margin-top: 20px;
+        text-align: center;
+        color: chocolate;
+        font-family: courier,arial,helvetica;
+    }
+ .about{
+     margin:20px;
+ }
+  .logo {
+        margin: 50px;
+    }
+.top>h1{
+    margin-top:50px;
+    text-align:center;
+}
+.side-bar > a {
+    text-decoration: none;
+    font-size: 1.3em;
+    line-height:40px;
+    padding:20px;
+    
+}
+.mb{
+    margin-bottom:10px;
+}
+
+.side-bar-container {
+    height: 100%;
+}
+
+ .side-bar:hover {
+        background-color: chocolate;
+        border-radius: 15px;
+
+    }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+password,
+textarea {
+    max-width: 400px;
+}

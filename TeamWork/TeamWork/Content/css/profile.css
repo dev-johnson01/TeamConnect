@@ -1,0 +1,38 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.details {
+	margin: 20px;
+}
+
+
+ul{
+	
+	position: absolute;
+	right: 20px;
+
+}
+li{
+	text-decoration: none;
+	display: inline;
+	margin-left: 15px;
+}
+
+.sidebar-menu{
+	min-height: 600px;
+	background-color: blue;
+}
+.sidebar{
+	/*margin: 10px;*/
+	font-size: 1.3em;
+	padding:5px 10px;
+}
+.sidebar:hover{
+	background-color: lightblue;
+	border-radius: 10px;
+	cursor: pointer;
+	
+}

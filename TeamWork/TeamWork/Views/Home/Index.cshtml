@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="top">
+    <h1>TeamConnect</h1>
+    <img src="~/Content/images/team-collaboration-1.jpg" alt="" width="1000" height="400"/>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4 ">
+        <h2>Getting started</h2>
+        <p>
+            Most organizations lack internal social network for employees that will 
+            facilitate more interaction between colleagues, 
+            in other to promote collaboration and team bonding
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Collaboration</h2>
+        <p>Collaboration is when a group of people come together and contribute their expertise for the benefit of a shared objective, 
+        project, or mission. It’s a photographer working with a designer to create a cover image, or a technology department .</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>TeamWork</h2>
+        <p>Being a master of one or a jack-of-all-trades in today’s 
+        world does not bring about success if you are unable to work as part of a team. 
+        The importance of teamwork cannot be stressed enough!.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+
+    <script type="text/javascript">
+			$(document).ready(function() {
+			setInterval(function(){
+					if($("img").attr("src")=="/Content/images/team-collaboration-1.jpg")
+					{
+						$("img").attr("src","/Content/images/team-collaboration-3.png");
+					}
+					
+					else{
+                        $("img").attr("src","/Content/images/team-collaboration-1.jpg");
+					}
+				},5000);
+
+			});
+    </script>
+</div>

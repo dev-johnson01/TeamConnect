@@ -1,0 +1,29 @@
+*{
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+form{
+	margin: auto;
+	max-width: 600px;
+	margin: auto;
+}
+.input-field{
+	margin-bottom: 20px;
+	width: 100%;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select{
+	background-color: thistle;
+	width: 100%;
+	border: none;
+	padding: 10px;
+}
+fieldset{
+	padding:20px;
+	margin: 20px;
+	/*background-color: lightgrey;*/
+}
