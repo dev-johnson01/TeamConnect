@@ -2,9 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="top">
-    <h1>TeamConnect</h1>
-    <img src="~/Content/images/team-collaboration-1.jpg" alt="" width="1000" height="400"/>
+<div class="banner">
+    <img src="~/Content/images/team-collaboration-1.jpg" alt="" width="1100" height="450"/>
     
 </div>
 
@@ -33,17 +32,21 @@
     </div>
 
     <script type="text/javascript">
-			$(document).ready(function() {
-			setInterval(function(){
-					if($("img").attr("src")=="/Content/images/team-collaboration-1.jpg")
-					{
-						$("img").attr("src","/Content/images/team-collaboration-3.png");
-					}
-					
-					else{
-                        $("img").attr("src","/Content/images/team-collaboration-1.jpg");
-					}
-				},5000);
+        $(document).ready(function ()
+        {
+                setInterval(function ()
+                {
+                    if ($("img").attr("src") === "/Content/images/team-collaboration-1.jpg")
+                    {
+                        $("img").attr("src", "/Content/images/team-collaboration-3.png").fadeIn(1000);
+                    }
+
+                    else if ($("img").attr("src") === "/Content/images/team-collaboration-3.jpg")
+                    {
+                        $("img").attr("src", "/Content/images/team-collaboration-1.jpg").fadeIn(1000);
+                    }
+
+                }, 5000);
 
 			});
     </script>

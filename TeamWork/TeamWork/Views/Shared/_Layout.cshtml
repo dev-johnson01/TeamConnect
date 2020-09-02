@@ -6,6 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,45 +30,40 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Login", "Signin", "Account")</li>
+                    
+                    
                     <li>@Html.ActionLink("Sign-up", "Registration", "Employee")</li>
-                    <li>@Html.ActionLink("Profile", "ViewProfile", "Account")</li>
+                    <li>@Html.ActionLink("Profile", "UserProfile", "Employee")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Employee")</li>
 
                 </ul>
             </div>
             
         </div>
     </div>
-    <div>
+    <div class="body-content">
         <div class="row">
             <div class="col-md-3 side-bar-container bg-info">
-                <div class="logo">
-
-                    <img src="~/Content/images/logo.png" alt="Alternate Text" width="200" />
-                    <h1>TeamConnect</h1>
-
-                    <div class="side-bar-menu">
-
-                        <div class="side-bar">@Html.ActionLink("Post Article", "WriteArticle", "Article")</div>
-                        <div class="side-bar">@Html.ActionLink("Post gif","PostGif","Gif")</div>
-                        <div class="side-bar">@Html.ActionLink("View Article", "ViewArticle", "Article")</div>
-
-
-                    </div>
-                </div>
+                @Html.Partial("_Sidebar_layout")
             </div>
             <div class="col-md-9">
+                <marque><h4>@ViewBag.Message</h4></marque>
                 @RenderBody()
             </div>
         </div>
         <hr />
         <footer class="jumbotron">
-            <p>&copy; @DateTime.Now.Year - TeamConnect Application</p>
+            <div style="margin:20px;"> <p>&copy; @DateTime.Now.Year - TeamConnect Application</p>  
+            <span>
+                <i class="fa fa-facebook fa-3x">  </i>
+                <i class="fa fa-instagram fa-3x"></i>
+                <i class="fa fa-twitter fa-3x"></i>
+                </span>
+            </div>
+           
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+   
 </body>
 </html>

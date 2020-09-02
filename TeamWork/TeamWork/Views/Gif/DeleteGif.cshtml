@@ -1,0 +1,58 @@
+﻿@model TeamWork.Models.EmployeeGif
+
+@{
+    ViewBag.Title = "DeleteGif";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteGif</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EmployeeGif</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GifTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GifTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GifUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GifUrl)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    
+    <a href="@Url.Action("ViewEmployeeGifs","Gif")" class="btn btn-primary elements">Back To Gif</a>
+</div>
+    }
+</div>

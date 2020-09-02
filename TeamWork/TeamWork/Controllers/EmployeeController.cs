@@ -5,16 +5,13 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using TeamWork.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeamWork.Controllers
 {
     public class EmployeeController : Controller
     {
-        
-
-        
-
-     
+    
         // GET: Employee
         public ActionResult Index()
         {
@@ -41,8 +38,61 @@ namespace TeamWork.Controllers
 
             return RedirectToAction("EmployeeRecord");
         }
+        public ActionResult Signin()
+        {
+            return View();
+        }
 
-       public ActionResult EmployeeRecord()
+        [HttpPost]
+        public ActionResult Signin(Employee emp)
+        {
+            using (var context = new EmployeeDbContext())
+            {
+                Employee usr = context.Employees.SingleOrDefault(record => record.Email == emp.Email && record.Password == emp.Password);
+
+                if (usr != null)
+                {
+                    Session["UserId"] = usr.EmployeeId.ToString();
+                    Session["Email"] = usr.Email.ToString();
+
+                    return RedirectToAction("index", "home");
+
+                }
+
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Email or Password");
+                }
+            }
+           
+            return View();
+        }
+        public ActionResult UserProfile()
+
+        {
+            if (Session["UserId"] != null)
+            {
+                using (var context = new EmployeeDbContext())
+                {
+                    string user_Id = Session["UserId"].ToString();
+                    var user = context.Employees.Single(row => row.EmployeeId.ToString() == user_Id);
+
+                    return View(user);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Signin");
+            }
+
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Signin");
+        }
+
+        public ActionResult EmployeeRecord()
         {
             ViewBag.title = "Employee Record";
 
@@ -63,7 +113,7 @@ namespace TeamWork.Controllers
 
             using (var context = new EmployeeDbContext())
             {
-                var employee = context.Employees.Where(record => record.Id == id).FirstOrDefault();
+                var employee = context.Employees.Where(record => record.EmployeeId == id).FirstOrDefault();
                 return View(employee);
             }
         }
@@ -79,7 +129,7 @@ namespace TeamWork.Controllers
 
             using (var context = new EmployeeDbContext())
             {
-                var employee = context.Employees.Where(record => record.Id == id).FirstOrDefault();
+                var employee = context.Employees.Where(record => record.EmployeeId == id).FirstOrDefault();
                 context.Employees.Remove(employee);
                 context.SaveChanges();
 
@@ -95,7 +145,7 @@ namespace TeamWork.Controllers
             }
             using (var context= new EmployeeDbContext())
             {
-                var employee = context.Employees.Where(record => record.Id == id).FirstOrDefault();
+                var employee = context.Employees.Where(record => record.EmployeeId == id).FirstOrDefault();
 
                 return View(employee);
                 
@@ -107,17 +157,17 @@ namespace TeamWork.Controllers
         {
             using (var context = new EmployeeDbContext())
             {
-                if (employee.Id >0)
+                if (employee.EmployeeId >0)
                 {
-                    var val = context.Employees.Where(record => record.Id == employee.Id).FirstOrDefault();
+                    var val = context.Employees.Where(record => record.EmployeeId == employee.EmployeeId).FirstOrDefault();
 
                     if(val != null)
                     {
                         val.FirstName = employee.FirstName;
                         val.LastName = employee.LastName;
                         val.JobRole = employee.JobRole;
-                        val.Gender = employee.Gender;
-                        val.Department = employee.Department;
+                        val.EmployeeGender = employee.EmployeeGender;
+                        val.EmployeeDepartment = employee.EmployeeDepartment;
                         val.Address = employee.Address;
                         val.Email = employee.Email;
                         val.Password = employee.Password;
@@ -142,7 +192,7 @@ namespace TeamWork.Controllers
             }
             using (var context = new EmployeeDbContext())
             {
-                var employee = context.Employees.Where(record => record.Id == id).FirstOrDefault();
+                var employee = context.Employees.Where(record => record.EmployeeId == id).FirstOrDefault();
 
                 return View(employee);
 

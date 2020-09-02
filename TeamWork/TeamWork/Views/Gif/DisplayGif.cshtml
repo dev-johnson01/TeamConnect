@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TeamWork.Models.EmployeeGif>
+
+@{
+    ViewBag.Title = "DisplayGif";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Display Gif</h2>
+
+
+<div class="row">
+
+    @foreach (var item in Model) 
+    {
+        <div class="col-4 " style="margin:20px">
+            <p><h4>PostedBy</h4> <h4><strong> @item.PostedBy</strong ></h4></p>
+            <img src="~/Content/images/gifs/@item.GifUrl" width="700" height="400" />
+            <h4> <i class="fa fa-clock fa-2x">    </i> @item.DateCreated</h4>
+        </div>
+        <hr />
+        <div style="margin:20px">
+            <h5>Comments @item.GifComments</h5>
+            @item.GifComments
+        </div>
+        @Html.ActionLink("Add Comment", "GifComment", "Gif")
+    }
+
+</div>

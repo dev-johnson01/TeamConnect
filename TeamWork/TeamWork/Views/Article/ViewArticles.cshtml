@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TeamWork.Models.EmployeeArticle>
+
+@{
+    ViewBag.Title = "ViewArticles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Articles</h2>
+
+<ul style="list-style-type:none">
+
+
+    @foreach (var item in Model)
+    {
+        <li>
+
+            <div style="border:solid lightgrey 1px; margin-bottom:20px; border-radius:15px;">
+                
+
+                <div style="padding:20px; margin: 10px;" id="article-body">
+                    <h5> <span class="fa fa-user "></span>Posted by: @item.PostedBy</h5>
+                    <h3 align="center"> @Html.DisplayFor(modelItem => item.ArticleTitle)</h3>
+
+                    @*@Html.DisplayFor(modelItem =>Html.Raw(item.ArticleBody))*@
+                    @Html.Raw(item.ArticleBody)
+                </div>
+                <div style="padding:10px; margin: 10px;" id="article-body">
+                    <a href="~/Content/images/@item.Image">
+                        <img src="~/Content/images/@item.Image" width="800" height="400" alt="Image here" />
+                    </a>
+                    <div style="display:inline; width:100%">
+                         <h5 align="right"> <span class="fa fa-clock-o"></span>Time posted: @item.DateCreated</h5>
+                    </div>
+                </div>
+                
+                <hr />
+
+                <div style="padding:20px; margin: 10px;">
+                    <h3>Comments</h3>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </div>
+                <hr />
+                <div style="padding:20px; margin: 10px;">
+                    @Html.ActionLink("AddComment", "PostComment", "Comment", new { id = item.ArticleId })
+                </div>
+                <hr />
+            </div>
+           
+        </li>
+ 
+    }
+
+</ul>
