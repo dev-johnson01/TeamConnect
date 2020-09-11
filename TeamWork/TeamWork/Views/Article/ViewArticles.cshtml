@@ -37,11 +37,25 @@
 
                 <div style="padding:20px; margin: 10px;">
                     <h3>Comments</h3>
+                    @if (item.Comments == null)
+                    {
+                        @ViewBag.NoComment
+                    }
                     @Html.DisplayFor(modelItem => item.Comments)
+                    @if (item.Comments != null)
+                    {
+                        foreach (var comment in item.Comments)
+                        {
+
+                            <h5><i class="fa fa-user fa-fw " aria-hidden="true"></i>@comment.PostedBy</h5>
+                            <div>@comment <span align="right"><i class="fa fa-user fa-fw " aria-hidden="true"></i> @comment.DateCreated</span></div>
+                        }
+                    }
+
                 </div>
                 <hr />
                 <div style="padding:20px; margin: 10px;">
-                    @Html.ActionLink("AddComment", "PostComment", "Comment", new { id = item.ArticleId })
+                    @Html.ActionLink("AddComment", "PostComment", "Comment", new { id = item.ArticleId }, new { @class="btn btn-info"})
                 </div>
                 <hr />
             </div>

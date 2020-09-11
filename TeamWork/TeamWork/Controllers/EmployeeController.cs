@@ -55,7 +55,15 @@ namespace TeamWork.Controllers
                     Session["UserId"] = usr.EmployeeId.ToString();
                     Session["Email"] = usr.Email.ToString();
 
-                    return RedirectToAction("index", "home");
+                    if (Session["Email"].ToString() == "admin@thehatch.co")
+                    {
+                        return RedirectToAction("Registration", "Employee");
+                    }
+                    else
+                    {
+                        return RedirectToAction("index", "home");
+                    }
+                    
 
                 }
 
