@@ -162,7 +162,6 @@
     <Compile Include="Models\EmployeeDbContext.cs" />
     <Compile Include="Models\EmployeeGif.cs" />
     <Compile Include="Models\GifComment.cs" />
-    <Compile Include="Models\PostArticle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

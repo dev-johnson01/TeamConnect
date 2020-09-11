@@ -15,11 +15,11 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
                 @Html.ActionLink("TeamConnect", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -30,40 +30,31 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    
-                    
-                    <li>@Html.ActionLink("Sign-up", "Registration", "Employee")</li>
+
                     <li>@Html.ActionLink("Profile", "UserProfile", "Employee")</li>
                     <li>@Html.ActionLink("Logout", "Logout", "Employee")</li>
 
                 </ul>
             </div>
-            
-        </div>
-    </div>
-    <div class="body-content">
-        <div class="row">
-            <div class="col-md-3 side-bar-container bg-info">
-                @Html.Partial("_Sidebar_layout")
-            </div>
-            <div class="col-md-9">
-                <marque><h4>@ViewBag.Message</h4></marque>
-                @RenderBody()
-            </div>
-        </div>
-        <hr />
-        <footer class="jumbotron">
-            <div style="margin:20px;"> <p>&copy; @DateTime.Now.Year - TeamConnect Application</p>  
-            <span>
-                <i class="fa fa-facebook fa-3x">  </i>
-                <i class="fa fa-instagram fa-3x"></i>
-                <i class="fa fa-twitter fa-3x"></i>
-                </span>
-            </div>
-           
-        </footer>
-    </div>
 
-   
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            @Html.Partial("_Sidebar_layout")
+        </div>
+        <div class="main-content">
+            <h4>@ViewBag.Message</h4>
+            @RenderBody()
+        </div>
+
+
+
+    </div>
+    <hr />
+    
+
+
+
 </body>
 </html>

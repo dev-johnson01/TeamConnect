@@ -32,7 +32,10 @@ namespace TeamWork.Controllers
                 if(id > 0)
                 {
                     using (EmployeeDbContext db = new EmployeeDbContext())
+
                     {
+                        comment.ArticleId = (int)id;
+
                         var blog = db.EmployeeArticles.Single(row => row.ArticleId == id);
 
 
@@ -41,6 +44,7 @@ namespace TeamWork.Controllers
                         comment.ArticleId = blog.ArticleId;
                         db.Comments.Add(comment);
                         db.SaveChanges();
+                        ViewBag.NoComment = "No Comment Added"; 
 
                     }
                     return RedirectToAction("ViewArticles", "Article");
